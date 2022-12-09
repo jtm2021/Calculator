@@ -10,3 +10,9 @@ function divide(a, b) {
   return a / b;
 }
 
+function subtract(a, b) {
+  return a - b;
+}
+
+subtract = subtract(5, 5);
+console.log(subtract);
