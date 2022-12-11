@@ -18,3 +18,8 @@ function modulo(a, b) {
   return a % b;
 }
 
+function operate(operator, a, b) {
+  return operator(a, b);
+}
+
+console.log(operate(modulo, 10, 2));

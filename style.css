@@ -49,4 +49,5 @@ button {
 
 .delete {
     transform: rotate(180deg);
+    background-image: linear-gradient(to left, #ccc, #fff);
 }
