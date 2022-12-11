@@ -1,8 +1,9 @@
 const display = document.querySelector(".display");
 const numberButtons = document.querySelectorAll(".number");
 const clear = document.querySelector(".clear");
+const positiveNegative = document.querySelector(".positive-negative");
 
-function displayCalculator() {
+function firstInput() {
   numberButtons.forEach((button) => {
     button.addEventListener("click", () => {
       display.innerText += button.innerText;
@@ -17,9 +18,15 @@ function clearDisplay() {
 
 clear.addEventListener("click", clearDisplay);
 
+function positiveNegativeDisplay() {
+  if (display.innerText.includes("-")) {
+    display.innerText = display.innerText.replace("-", "");
+  } else {
+    display.innerText = "-" + display.innerText;
+  }
+}
 
-displayCalculator();
-
+positiveNegative.addEventListener("click", positiveNegativeDisplay);
 
 function sum(a, b) {
   return a + b;
@@ -44,3 +51,5 @@ function modulo(a, b) {
 function operate(operator, a, b) {
   return operator(a, b);
 }
+
+firstInput();
