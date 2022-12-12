@@ -1,4 +1,4 @@
-const display = document.querySelector(".display");
+const display = document.querySelector(".display1");
 const numberButtons = document.querySelectorAll(".number");
 const clear = document.querySelector(".clear");
 const positiveNegative = document.querySelector(".positive-negative");
@@ -7,13 +7,13 @@ const deleteButton = document.querySelector(".delete");
 function firstInput() {
   numberButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      input1 = display.innerText += button.innerText;
+      input1 = display.textContent += button.textContent;
     });
 });
 }
 
 function clearDisplay() {
-  display.innerText = "";
+  display.textContent = "";
 }
 
 clear.addEventListener("click", clearDisplay);
