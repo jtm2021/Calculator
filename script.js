@@ -2,13 +2,13 @@ const display = document.querySelector(".display");
 const numberButtons = document.querySelectorAll(".number");
 const clear = document.querySelector(".clear");
 const positiveNegative = document.querySelector(".positive-negative");
+const deleteButton = document.querySelector(".delete");
 
 function firstInput() {
   numberButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      display.innerText += button.innerText;
+      input1 = display.innerText += button.innerText;
     });
-  console.log(display.innerText);
 });
 }
 
@@ -27,6 +27,12 @@ function positiveNegativeDisplay() {
 }
 
 positiveNegative.addEventListener("click", positiveNegativeDisplay);
+
+function deleteDisplay() {
+  display.innerText = display.innerText.slice(0, -1);
+}
+
+deleteButton.addEventListener("click", deleteDisplay);
 
 function sum(a, b) {
   return a + b;
@@ -51,5 +57,7 @@ function modulo(a, b) {
 function operate(operator, a, b) {
   return operator(a, b);
 }
+
+
 
 firstInput();
