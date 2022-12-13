@@ -16,9 +16,9 @@ let decimal = false;
 
 numberButtons.forEach( number => {
   number.addEventListener("click", (e) => {
-    if (e.target.innerText === "." && !decimal) {
+    if (e.target.innerText === "." && !decimal){
       decimal = true;
-    } else if (e.target.innerText === "." && decimal) {
+    } else if (e.target.innerText === "." && decimal){
       return;
     }
     recentInput += e.target.innerText;
@@ -96,13 +96,11 @@ deleteButton.addEventListener("click", deleteDisplay => {
 });
 
 positiveNegative.addEventListener("click", positiveNegativeDisplay => {
-  if (displayBelow.innerText.includes("-")) {
-    recentInput.innerText = recentInput.innerText.replace("-", "");
-    displayBelow.innerText = displayBelow.innerText.replace("-", "");
-  } else {
-    recentInput = "-" + recentInput;
-    displayBelow.innerText = "-" + displayBelow.innerText;
+  if (displayBelow.innerText === "") {
+    displayAbove.innerText = "";
   }
+  displayBelow.innerText = displayBelow.innerText * -1;
+  recentInput = displayBelow.innerText;
 });
 
 
