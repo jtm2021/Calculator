@@ -5,97 +5,102 @@ const clear = document.querySelector(".clear");
 const positiveNegative = document.querySelector(".positive-negative");
 const deleteButton = document.querySelector(".delete");
 const operatorButtons = document.querySelectorAll(".operation");
-const operation = document.querySelector(".equals");
+const equalSign = document.querySelector(".equals");
 
-let input1 = "";
-let input2 = "";
+let priorInput = "";
+let recentInput = "";
 let operator = "";
 let recentOperator = "";
+let output = null;
 let decimal = false;
 
-numberButtons.forEach((number) => {
+numberButtons.forEach( number => {
   number.addEventListener("click", (e) => {
     if (e.target.innerText === "." && !decimal) {
       decimal = true;
     } else if (e.target.innerText === "." && decimal) {
       return;
     }
-    input2 += e.target.innerText;
-    displayBelow.innerText = input2;
-    // console.log();
+    recentInput += e.target.innerText;
+    displayBelow.innerText = recentInput;
   });
 });
 
 operatorButtons.forEach((operation) => {
   operation.addEventListener("click", (e) => {
-    if (!input2) return;
+    if (!recentInput) return;
     decimal = false;
     const operator = e.target.innerText;
-    if (input1 && input2 && operator) {
+    if (priorInput && recentInput && operator) {
       operate();
     } else {
-      output = parseFloat(input2);
+      output = parseFloat(recentInput);
     }
-    clearVar(operator);
+    clearLine(operator);
     recentOperator = operator;
-    // console.log(operator);
   });
 });
 
-function clearVar(name = "") {
-  input1 += output + " " + name + " ";
-  displayAbove.innerText = input1;
+function clearLine(operatorSymbol = " ") {
+  priorInput += recentInput + " " + operatorSymbol + " ";
+  displayAbove.innerText = priorInput;
   displayBelow.innerText = "";
-  input2 = "";
-  displayBelow
+  recentInput = "";
 }
 
 function operate() {
   if (recentOperator === "+") {
-    output = sum(parseFloat(output), parseFloat(input2));
+    output = sum(parseFloat(output), parseFloat(recentInput));
   } else if (recentOperator === "-") { 
-    output = subtract(parseFloat(output), parseFloat(input2));
+    output = subtract(parseFloat(output), parseFloat(recentInput));
   } else if (recentOperator === "x") {
-    output = multiply(parseFloat(output), parseFloat(input2));
+    output = multiply(parseFloat(output), parseFloat(recentInput));
   } else if (recentOperator === "/") {
-    if (input2 === "0") {
+    if (recentInput === "0") {
       alert("You can't divide it by 0");
+      displayAbove.tinnerText = "";
+      displayBelow.innerText = "";
+      priorInput = "";
+      recentInput = "";
       return;
-    }
-    output = divide(parseFloat(output), parseFloat(input2));
+    } else output = divide(parseFloat(output), parseFloat(recentInput));
   } else if (recentOperator === "%") {
-    output = modulo(parseFloat(output), parseFloat(input2));
+    output = modulo(parseFloat(output), parseFloat(recentInput));
   }
 }
 
-operation.addEventListener("click", () => {
-  if (!input1 || !input2) return;
+equalSign.addEventListener("click", () => {
+  if (!priorInput || !recentInput) return;
   decimal = false;
   operate();
-  clearVar();
+  clearLine();
   displayBelow.innerText = output;
-  input2 = output;
-  input1 = "";
+  recentInput = output;
+  priorInput = "";
 });
 
 clear.addEventListener("click", clearDisplay => {
   displayAbove.innerText = "";
   displayBelow.innerText = "";
-  input1 = "";
-  input2 = "";
+  priorInput = "";
+  recentInput = "";
   output = "";
 });
 
 deleteButton.addEventListener("click", deleteDisplay => {
+  if (displayBelow.innerText === "") {
+    displayAbove.innerText = "";
+  }
   displayBelow.innerText = displayBelow.innerText.slice(0, -1);
-  input2 = input2.slice(0, -1);
+  recentInput = displayBelow.innerText;
 });
 
 positiveNegative.addEventListener("click", positiveNegativeDisplay => {
   if (displayBelow.innerText.includes("-")) {
+    recentInput.innerText = recentInput.innerText.replace("-", "");
     displayBelow.innerText = displayBelow.innerText.replace("-", "");
-    displayAbove.innerText = displayAbove.innerText.replace("-", "");
   } else {
+    recentInput = "-" + recentInput;
     displayBelow.innerText = "-" + displayBelow.innerText;
   }
 });
