@@ -1,4 +1,3 @@
-const wholeDisplay = document.querySelector(".display");
 const displayAbove = document.querySelector(".display1");
 const displayBelow = document.querySelector(".display2");
 const numberButtons = document.querySelectorAll(".number");
@@ -6,108 +5,118 @@ const clear = document.querySelector(".clear");
 const positiveNegative = document.querySelector(".positive-negative");
 const deleteButton = document.querySelector(".delete");
 const operatorButtons = document.querySelectorAll(".operation");
-const equalsCalculate = document.querySelector(".equals");
+const operation = document.querySelector(".equals");
 
 let input1 = "";
-let operator = "";
 let input2 = "";
-let inputPlusOperator = "";
+let operator = "";
+let recentOperator = "";
+let decimal = false;
 
-function firstInput() {
-  numberButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      input1 = displayAbove.textContent += button.textContent;
-      // input1 = parseFloat(input1);
-      console.log(typeof(input1 * 1));
-      return input1;
-    });
-});
-}
-
-function chooseOperator() {
-  operatorButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      operator = button.textContent;
-      displayAbove.textContent += operator;
-      // console.log(operator);
-      // return inputPlusOperator;
-    });
-  });
-}
-
-function secondInput() {
-  numberButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      input2 = button.textContent;
-      console.log(input2 * 1);
-      return input2;
-    });
-  });
-}
-
-function calculateNow() {
-  equalsCalculate.addEventListener("click", () => {
-    if (operator === "+") {
-      totalSum = sum(input1, input2);
-      console.log(totalSum);
-      displayBelow.textContent = totalSum;
+numberButtons.forEach((number) => {
+  number.addEventListener("click", (e) => {
+    if (e.target.innerText === "." && !decimal) {
+      decimal = true;
+    } else if (e.target.innerText === "." && decimal) {
+      return;
     }
+    input2 += e.target.innerText;
+    displayBelow.innerText = input2;
+    // console.log();
   });
+});
+
+operatorButtons.forEach((operation) => {
+  operation.addEventListener("click", (e) => {
+    if (!input2) return;
+    decimal = false;
+    const operator = e.target.innerText;
+    if (input1 && input2 && operator) {
+      operate();
+    } else {
+      output = parseFloat(input2);
+    }
+    clearVar(operator);
+    recentOperator = operator;
+    // console.log(operator);
+  });
+});
+
+function clearVar(name = "") {
+  input1 += output + " " + name + " ";
+  displayAbove.innerText = input1;
+  displayBelow.innerText = "";
+  input2 = "";
+  displayBelow
 }
 
-function clearDisplay() {
+function operate() {
+  if (recentOperator === "+") {
+    output = sum(parseFloat(output), parseFloat(input2));
+  } else if (recentOperator === "-") { 
+    output = subtract(parseFloat(output), parseFloat(input2));
+  } else if (recentOperator === "x") {
+    output = multiply(parseFloat(output), parseFloat(input2));
+  } else if (recentOperator === "/") {
+    if (input2 === "0") {
+      alert("You can't divide it by 0");
+      return;
+    }
+    output = divide(parseFloat(output), parseFloat(input2));
+  } else if (recentOperator === "%") {
+    output = modulo(parseFloat(output), parseFloat(input2));
+  }
+}
+
+operation.addEventListener("click", () => {
+  if (!input1 || !input2) return;
+  decimal = false;
+  operate();
+  clearVar();
+  displayBelow.innerText = output;
+  input2 = output;
+  input1 = "";
+});
+
+clear.addEventListener("click", clearDisplay => {
   displayAbove.innerText = "";
   displayBelow.innerText = "";
-}
+  input1 = "";
+  input2 = "";
+  output = "";
+});
 
-clear.addEventListener("click", clearDisplay);
+deleteButton.addEventListener("click", deleteDisplay => {
+  displayBelow.innerText = displayBelow.innerText.slice(0, -1);
+  input2 = input2.slice(0, -1);
+});
 
-// function positiveNegativeDisplay() {
-//   if (displayAbove.innerText.includes("-")) {
-//     displayAbove.innerText = displayAbove.innerText.replace("-", "");
-//   } else {
-//     displayAbove.innerText = "-" + displayAbove.innerText;
-//   }
-// }
+positiveNegative.addEventListener("click", positiveNegativeDisplay => {
+  if (displayBelow.innerText.includes("-")) {
+    displayBelow.innerText = displayBelow.innerText.replace("-", "");
+    displayAbove.innerText = displayAbove.innerText.replace("-", "");
+  } else {
+    displayBelow.innerText = "-" + displayBelow.innerText;
+  }
+});
 
-// positiveNegative.addEventListener("click", positiveNegativeDisplay);
-
-function deleteDisplay() {
-  displayAbove.innerText = displayAbove.innerText.slice(0, -1);
-  displayBelow.innerText = displayBelow.innerText.slice(0, 0);
-}
-
-deleteButton.addEventListener("click", deleteDisplay);
 
 function sum(a, b) {
   return a + b;
 }
 
-// function multiply(a, b) {
-//   return a * b;
-// }
-
-// function divide(a, b) {
-//   return a / b;
-// }
-
-// function subtract(a, b) {
-//   return a - b;
-// }
-
-// function modulo(a, b) {
-//   return a % b;
-// }
-
-// function operate(operator, a, b) {
-//   return operator(a, b);
-// }
-
-function calculator() {
-  firstInput();
-  chooseOperator();
-  secondInput();
-  calculateNow();
+function multiply(a, b) {
+  return a * b;
 }
 
-calculator();	
+function divide(a, b) {
+  return a / b;
+}
+
+function subtract(a, b) {
+  return a - b;
+}
+
+function modulo(a, b) {
+  return a % b;
+}
