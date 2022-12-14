@@ -97,7 +97,7 @@ deleteButton.addEventListener("click", deleteDisplay => {
 });
 
 positiveNegative.addEventListener("click", positiveNegativeDisplay => {
-  if (displayBelow.innerText === "") {
+  if (displayBelow.innerText === "" || displayBelow.innerText === "0") {
     return;
   }
   displayBelow.innerText = displayBelow.innerText * -1;

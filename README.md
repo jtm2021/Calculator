@@ -39,7 +39,7 @@ IMPORTANT INSTRUCTIONS:
 
 - Users can input a decimal point but the code prevent users to input more than one decimal point at a time.
 
-- The negative symbol is deactivated when the display is empty. Users can only convert a value to negative once there is number input.
+- The negative symbol is deactivated when the display is empty or with zero value. Users can only convert a value to negative once there is a valid number input other than zero.
 
 - Using backspace key deletes recent input. If number input is empty, pressing the backspace again will eventually delete previous calculations and clears the whole calculator output display.
 
