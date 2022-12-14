@@ -37,8 +37,9 @@ IMPORTANT INSTRUCTIONS:
 
 ![Mockup](./images/division-alert.png)
 
-    -- Users can input a decimal point but the code prevent users to input more than one decimal point at a time.
-
+    - Users can input a decimal point but the code prevent users to input more than one decimal point at a time.
+    
+    - The negative symbol is deactivated when the display is empty. Users can only convert a value to negative once there is number input.
 
     
 

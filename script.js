@@ -98,7 +98,7 @@ deleteButton.addEventListener("click", deleteDisplay => {
 
 positiveNegative.addEventListener("click", positiveNegativeDisplay => {
   if (displayBelow.innerText === "") {
-    displayAbove.innerText = "";
+    return;
   }
   displayBelow.innerText = displayBelow.innerText * -1;
   recentInput = displayBelow.innerText;
