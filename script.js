@@ -62,7 +62,11 @@ function operate() {
       priorInput = "";
       recentInput = "";
       return;
-    } else output = divide(parseFloat(output), parseFloat(recentInput));
+    } else {
+      output = divide(parseFloat(output), parseFloat(recentInput));
+      output = parseFloat(output.toFixed(4));
+    }
+      
   } else if (recentOperator === "%") {
     output = modulo(parseFloat(output), parseFloat(recentInput));
   }
