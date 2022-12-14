@@ -6,6 +6,7 @@ const positiveNegative = document.querySelector(".positive-negative");
 const deleteButton = document.querySelector(".delete");
 const operatorButtons = document.querySelectorAll(".operation");
 const equalSign = document.querySelector(".equals");
+const allbuttons = document.getElementsByTagName("button");
 
 let priorInput = "";
 let recentInput = "";
@@ -19,7 +20,13 @@ numberButtons.forEach( number => {
       decimal = true;
     } else if ((e.target.innerText === "." && decimal) || (recentInput === "0" && e.target.innerText === "0")) {
       return;
-    };
+    } else if (displayBelow.innerText.includes("Infinity") || displayBelow.innerText.includes("NaN")) {
+      displayBelow.innerText = "";
+      recentInput = "";
+      priorInput = "";
+      // return;
+    }
+    
     recentInput += e.target.innerText;
     displayBelow.innerText = recentInput;
   });
@@ -83,6 +90,10 @@ clear.addEventListener("click", clearDisplay => {
 
 deleteButton.addEventListener("click", deleteDisplay => {
   if (displayBelow.innerText === "") {
+    displayAbove.innerText = "";
+    priorInput = "";
+  } else if (displayBelow.innerText === "Infinity" || displayBelow.innerText === "NaN") {
+    displayBelow.innerText = "";
     displayAbove.innerText = "";
     priorInput = "";
   }
