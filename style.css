@@ -23,6 +23,7 @@ body {
     background: rgb(177, 175, 175);
     padding: 30px  10px;
     min-height: 118.6px;
+    height: 180px;
     text-align: right;
     font-size: 3.2rem;
     border-bottom: 1px solid #ccc;
@@ -30,12 +31,12 @@ body {
 }
 
 .display1 {
-    font-size: 2.5rem;
+    font-size: 30px;
     color: rgb(77, 73, 73);
 }
 
 .display2 {
-    font-size: 3.2rem;
+    font-size: 40px;
 }
 
 .buttons {

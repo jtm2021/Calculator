@@ -17,9 +17,9 @@ numberButtons.forEach( number => {
   number.addEventListener("click", (e) => {
     if (e.target.innerText === "." && !decimal){
       decimal = true;
-    } else if (e.target.innerText === "." && decimal){
+    } else if ((e.target.innerText === "." && decimal) || (recentInput === "0" && e.target.innerText === "0")) {
       return;
-    }
+    };
     recentInput += e.target.innerText;
     displayBelow.innerText = recentInput;
   });
@@ -55,18 +55,8 @@ function operate() {
   } else if (recentOperator === "x") {
     output = multiply(parseFloat(output), parseFloat(recentInput));
   } else if (recentOperator === "/") {
-    if (recentInput === "0") {
-      alert("You can't divide it by 0");
-      displayAbove.tinnerText = "";
-      displayBelow.innerText = "";
-      priorInput = "";
-      recentInput = "";
-      return;
-    } else {
       output = divide(parseFloat(output), parseFloat(recentInput));
       output = parseFloat(output.toFixed(4));
-    }
-      
   } else if (recentOperator === "%") {
     output = modulo(parseFloat(output), parseFloat(recentInput));
   }
