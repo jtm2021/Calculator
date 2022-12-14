@@ -14,9 +14,11 @@ This calculator app has an added keyboard functionality that allows users to use
     
 IMPORTANT INSTRUCTIONS:
 
-`number keys` - users can use the number keys for the operands
+`0` `1` `2` `3` `4` `5` `6` `7` `8` `9` - users can use the number keys for the operands
 <br>
-`operation keys`- regular mathematical symbols for the operators
+`+` `-` `*` `/` - regular mathematical symbols for the operators
+<br>
+`%` - this represents the modulo operator and doesn't represent percentage
 <br>
 `enter` / `=` - can be used to calculate the mathematical expression
 <br>
@@ -27,6 +29,18 @@ IMPORTANT INSTRUCTIONS:
 `Escape key` / `Delete Key` - use to clear whole calculator output display
 <br>
 `n` - use this to indicate a number to be of negative value
+
+<br>
+
+## Handling Calculationn Issues
+    - An alert message will pop up once the user divides a number with `0`. After clicking `OK`, the screen will revert back to previous input.
+
+![Mockup](./images/division-alert.png)
+
+    -- Users can input a decimal point but the code prevent users to input more than one decimal point at a time.
+
+
+    
 
 ## Wireframes
 The wireframe for this project were made digitally using [**Figma**](https://www.figma.com/).
