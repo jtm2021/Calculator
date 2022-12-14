@@ -32,7 +32,7 @@ IMPORTANT INSTRUCTIONS:
 
 <br>
 
-## Handling Calculationn Issues
+## Handling Calculation Issues
     - An alert message will pop up once the user divides a number with `0`. After clicking `OK`, the screen will revert back to previous input.
 
 ![Mockup](./images/division-alert.png)
@@ -40,6 +40,8 @@ IMPORTANT INSTRUCTIONS:
     - Users can input a decimal point but the code prevent users to input more than one decimal point at a time.
     
     - The negative symbol is deactivated when the display is empty. Users can only convert a value to negative once there is number input.
+
+    - Using backspace key deletes recent input. If number input is empty, pressing the backspace again will eventually delete previous calculations and clears the whole calculator output display.
 
     
 
