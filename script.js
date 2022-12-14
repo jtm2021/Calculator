@@ -16,10 +16,10 @@ let decimal = false;
 
 numberButtons.forEach( number => {
   number.addEventListener("click", (e) => {
-    if (e.target.innerText === "." && !decimal){
-      decimal = true;
-    } else if (e.target.innerText === "." && decimal){
+    if (e.target.innerText === "." && decimal){
       return;
+    } else if (e.target.innerText === "." && !decimal){
+      decimal = true;
     }
     recentInput += e.target.innerText;
     displayBelow.innerText = recentInput;
@@ -85,6 +85,7 @@ clear.addEventListener("click", clearDisplay => {
   priorInput = "";
   recentInput = "";
   output = "";
+  decimal = false;
 });
 
 deleteButton.addEventListener("click", deleteDisplay => {
@@ -102,7 +103,6 @@ positiveNegative.addEventListener("click", positiveNegativeDisplay => {
   }
   displayBelow.innerText = displayBelow.innerText * -1;
   recentInput = displayBelow.innerText;
-  // recentInput = "";
   return;
 });
 
@@ -152,6 +152,12 @@ window.addEventListener("keydown", (e) => {
     equalSign.click();
   } else if (e.key === "Backspace") {
     deleteButton.click();
+  } else if (e.key === "Escape" || e.key === "Delete") {
+    clear.click();
+  }	else if (e.key === "n") {
+    positiveNegative.click();
+  // } else if (e.key === ".") {
+  //   pressNumberButton(e.key);
   }
   // console.log(e.key)
 });
