@@ -141,12 +141,10 @@ window.addEventListener("keydown", (e) => {
     e.key === "."
   ) {
     pressNumberButton(e.key);
-    // console.log(e.key)
   } else if (e.key === "+" || e.key === "-" || e.key === "/" || e.key === "%") {
     pressOperatorButton(e.key);
   } else if (e.key === "*") {
     pressOperatorButton("x");
-    // console.log(e.key)
   } else if (e.key == "Enter" || e.key === "=") {
     equalSign.click();
   } else if (e.key === "Backspace") {
@@ -155,10 +153,7 @@ window.addEventListener("keydown", (e) => {
     clear.click();
   }	else if (e.key === "n") {
     positiveNegative.click();
-  // } else if (e.key === ".") {
-  //   pressNumberButton(e.key);
   }
-  // console.log(e.key)
 });
 
 function pressNumberButton(key) {
