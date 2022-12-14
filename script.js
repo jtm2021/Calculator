@@ -89,7 +89,8 @@ clear.addEventListener("click", clearDisplay => {
 
 deleteButton.addEventListener("click", deleteDisplay => {
   if (displayBelow.innerText === "") {
-    displayAbove.innerText = "";
+    displayAbove.innerText = ""
+    priorInput = "";
   }
   displayBelow.innerText = displayBelow.innerText.slice(0, -1);
   recentInput = displayBelow.innerText;
@@ -101,6 +102,8 @@ positiveNegative.addEventListener("click", positiveNegativeDisplay => {
   }
   displayBelow.innerText = displayBelow.innerText * -1;
   recentInput = displayBelow.innerText;
+  // recentInput = "";
+  return;
 });
 
 
@@ -122,4 +125,49 @@ function subtract(a, b) {
 
 function modulo(a, b) {
   return a % b;
+}
+
+window.addEventListener("keydown", (e) => {
+  if (
+    e.key === "0" ||
+    e.key === "1" ||
+    e.key === "2" ||
+    e.key === "3" ||
+    e.key === "4" ||
+    e.key === "5" ||
+    e.key === "6" ||
+    e.key === "7" ||
+    e.key === "8" ||
+    e.key === "9" ||
+    e.key === "."
+  ) {
+    pressNumberButton(e.key);
+    // console.log(e.key)
+  } else if (e.key === "+" || e.key === "-" || e.key === "/" || e.key === "%") {
+    pressOperatorButton(e.key);
+  } else if (e.key === "*") {
+    pressOperatorButton("x");
+    // console.log(e.key)
+  } else if (e.key == "Enter" || e.key === "=") {
+    equalSign.click();
+  } else if (e.key === "Backspace") {
+    deleteButton.click();
+  }
+  // console.log(e.key)
+});
+
+function pressNumberButton(key) {
+  numberButtons.forEach((button) => {
+    if (button.innerText === key) {
+      button.click();
+    }
+  });
+}
+
+function pressOperatorButton(key) {
+  operatorButtons.forEach((operation) => {
+    if (operation.innerText === key) {
+      operation.click();
+    }
+  });
 }
