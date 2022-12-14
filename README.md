@@ -88,4 +88,4 @@ The site was deployed to GitHub pages. The steps to deploy are as follows:
 - Go to pages tab and from the source section drop-down menu, select the main Branch and then click save button.
 - Once the main branch has been selected and saved, the page provided a link the completed website. 
 
-        - The live link can be found here - https://jtm2021.github.io/Calculator/
+The live link can be found here - https://jtm2021.github.io/Calculator/
