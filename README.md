@@ -33,10 +33,6 @@ IMPORTANT INSTRUCTIONS:
 <br>
 
 ## Handling Calculation Issues
-- An alert message will pop up once the user divides a number with `0`. After clicking `OK`, the screen will revert back to previous input.
-
-![Mockup](./images/division-alert.png)
-
 - Users can input a decimal point but the code prevent users to input more than one decimal point at a time.
 
 - The negative symbol is deactivated when the display is empty or with zero value. Users can only convert a value to negative once there is a valid number input other than zero.
