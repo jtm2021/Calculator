@@ -33,15 +33,15 @@ IMPORTANT INSTRUCTIONS:
 <br>
 
 ## Handling Calculation Issues
-    - An alert message will pop up once the user divides a number with `0`. After clicking `OK`, the screen will revert back to previous input.
+- An alert message will pop up once the user divides a number with `0`. After clicking `OK`, the screen will revert back to previous input.
 
 ![Mockup](./images/division-alert.png)
 
-    - Users can input a decimal point but the code prevent users to input more than one decimal point at a time.
-    
-    - The negative symbol is deactivated when the display is empty. Users can only convert a value to negative once there is number input.
+- Users can input a decimal point but the code prevent users to input more than one decimal point at a time.
 
-    - Using backspace key deletes recent input. If number input is empty, pressing the backspace again will eventually delete previous calculations and clears the whole calculator output display.
+- The negative symbol is deactivated when the display is empty. Users can only convert a value to negative once there is number input.
+
+- Using backspace key deletes recent input. If number input is empty, pressing the backspace again will eventually delete previous calculations and clears the whole calculator output display.
 
     
 
@@ -76,3 +76,16 @@ The wireframe for this project were made digitally using [**Figma**](https://www
 
 - Javascript - No errors were found when passing through the javascript code quality tool [**JSHint**](https://jshint.com/)
     - ![Javascript](./images/js-validation.png)
+
+<br>
+
+## Deployment 
+The site was deployed to GitHub pages. The steps to deploy are as follows:
+
+- Open a web browser (like Chrome, Firefox or Edge)
+- Login to Github and locate repositories.
+- In the GitHub repository, navigate to the Settings tab.
+- Go to pages tab and from the source section drop-down menu, select the main Branch and then click save button.
+- Once the main branch has been selected and saved, the page provided a link the completed website. 
+
+        - The live link can be found here - https://jtm2021.github.io/Calculator/
