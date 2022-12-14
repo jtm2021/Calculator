@@ -9,7 +9,6 @@ const equalSign = document.querySelector(".equals");
 
 let priorInput = "";
 let recentInput = "";
-let operator = "";
 let recentOperator = "";
 let output = null;
 let decimal = false;
@@ -90,7 +89,7 @@ clear.addEventListener("click", clearDisplay => {
 
 deleteButton.addEventListener("click", deleteDisplay => {
   if (displayBelow.innerText === "") {
-    displayAbove.innerText = ""
+    displayAbove.innerText = "";
     priorInput = "";
   }
   displayBelow.innerText = displayBelow.innerText.slice(0, -1);
