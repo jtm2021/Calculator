@@ -15,10 +15,10 @@ let decimal = false;
 
 numberButtons.forEach( number => {
   number.addEventListener("click", (e) => {
-    if (e.target.innerText === "." && decimal){
-      return;
-    } else if (e.target.innerText === "." && !decimal){
+    if (e.target.innerText === "." && !decimal){
       decimal = true;
+    } else if (e.target.innerText === "." && decimal){
+      return;
     }
     recentInput += e.target.innerText;
     displayBelow.innerText = recentInput;
@@ -97,7 +97,7 @@ deleteButton.addEventListener("click", deleteDisplay => {
 });
 
 positiveNegative.addEventListener("click", positiveNegativeDisplay => {
-  if (displayBelow.innerText === "" || displayBelow.innerText === "0") {
+  if (displayBelow.innerText === "" || displayBelow.innerText === "0" || displayBelow.innerText === "0.") {
     return;
   }
   displayBelow.innerText = displayBelow.innerText * -1;
