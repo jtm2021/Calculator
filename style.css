@@ -46,7 +46,6 @@ body {
     display: flex;
     flex-direction: column-reverse;
     flex-wrap: wrap;
-    overflow: hidden;
 }
 
 .buttons {
