@@ -21,9 +21,9 @@ body {
 
 .display {
     background: rgb(177, 175, 175);
-    padding: 30px  10px;
+    padding: 30px  10px 10px;
     min-height: 118.6px;
-    height: 180px;
+    height: 210px;
     text-align: right;
     font-size: 3.2rem;
     border-bottom: 1px solid #ccc;
@@ -31,12 +31,22 @@ body {
 }
 
 .display1 {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     color: rgb(77, 73, 73);
+    max-height: 90px;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    overflow: hidden;
 }
 
 .display2 {
-    font-size: 2.5rem;
+    font-size: 40px;
+    max-height: 90px;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    overflow: hidden;
 }
 
 .buttons {
